@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>902620596842-vi9dst9uhbi344d8vpr2ra6ttbbs85ir.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.902620596842-vi9dst9uhbi344d8vpr2ra6ttbbs85ir</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBo2Sm7ExwnbQR0Ym5KEbP5Jv_qZJxV3bo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>902620596842</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Hackchella.WingMom</string>
+	<key>PROJECT_ID</key>
+	<string>wingmom-b2d29</string>
+	<key>STORAGE_BUCKET</key>
+	<string>wingmom-b2d29.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:902620596842:ios:8e28b3be160531d6</string>
+	<key>DATABASE_URL</key>
+	<string>https://wingmom-b2d29.firebaseio.com</string>
+</dict>
+</plist>
