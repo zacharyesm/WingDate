@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WingMom/Controller/MatchSwipeVC.swift"
-            timestampString = "546100759.614925"
+            filePath = "WingMom/New Group/MatchView.swift"
+            timestampString = "546225643.71579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "setupView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WingMom/New Group/MatchView.swift"
-            timestampString = "546100759.615007"
+            filePath = "WingMom/Controller/MatchSwipeVC.swift"
+            timestampString = "546225643.717309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "setupView()"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
+            landmarkName = "removeOldFrontCard()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

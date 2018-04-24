@@ -48,15 +48,19 @@ class CardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .red
+        
+        clipsToBounds = true
+        
         layer.cornerRadius = 10
         
         let margins = layoutMarginsGuide
         
         addSubview(imageView)
-        imageView.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0).isActive = true
         
         addSubview(jobLabel)
         jobLabel.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -5).isActive = true

@@ -14,7 +14,7 @@ class MatchSwipeVC: UIViewController {
         let sc = UISegmentedControl(items: ["Parent", "Me"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.selectedSegmentIndex = 0
-        sc.tintColor = .white
+        sc.tintColor = .red
 //        sc.backgroundColor = .white
         return sc
     }()
@@ -28,6 +28,30 @@ class MatchSwipeVC: UIViewController {
     var users = [User]()
     
     var motherLikes = [String]()
+    
+    let likeImage: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "swipe-right_2"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        iv.alpha = 0
+        return iv
+    }()
+    
+    let dislikeImage: UIImageView = {
+        let iv = UIImageView(image: #imageLiteral(resourceName: "swipe-left"))
+        iv.translatesAutoresizingMaskIntoConstraints = false
+        iv.contentMode = .scaleAspectFit
+        iv.alpha = 0
+        return iv
+    }()
+    
+    let searchingView: UIView = {
+        let v = UIView()
+        v.translatesAutoresizingMaskIntoConstraints = false
+        v.backgroundColor = .white
+        v.alpha = 0
+        return v
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +83,53 @@ class MatchSwipeVC: UIViewController {
     }
     
     fileprivate func setupView() {
-        self.view.backgroundColor = UIColor(red: 28/255, green: 39/255, blue: 101/255, alpha: 1.0)
+//        self.view.backgroundColor = UIColor(red: 28/255, green: 39/255, blue: 101/255, alpha: 1.0)
+        view.backgroundColor = .white
         let margins = view.layoutMarginsGuide
         
         view.addSubview(segmentedControl)
         segmentedControl.topAnchor.constraint(equalTo: margins.topAnchor, constant: 20).isActive = true
         segmentedControl.widthAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.85).isActive = true
         segmentedControl.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        
+        let swipeSV = UIStackView(arrangedSubviews: [dislikeImage, likeImage])
+        swipeSV.translatesAutoresizingMaskIntoConstraints = false
+        swipeSV.axis = .horizontal
+        swipeSV.distribution = .fillEqually
+        
+        view.addSubview(swipeSV)
+        swipeSV.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        swipeSV.widthAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.85).isActive = true
+        swipeSV.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: -20).isActive = true
+        swipeSV.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        
+        view.addSubview(searchingView)
+        searchingView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchingView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        searchingView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
+        searchingView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+        
+        let image = UIImageView(image: #imageLiteral(resourceName: "world"))
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        searchingView.addSubview(image)
+        image.topAnchor.constraint(equalTo: searchingView.topAnchor).isActive = true
+        image.leadingAnchor.constraint(equalTo: searchingView.leadingAnchor).isActive = true
+        image.trailingAnchor.constraint(equalTo: searchingView.trailingAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: searchingView.bottomAnchor, constant: -50).isActive = true
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.text = "No people in area"
+        label.textAlignment = .center
+        
+        searchingView.addSubview(label)
+        label.topAnchor.constraint(equalTo: image.bottomAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: searchingView.leadingAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: searchingView.trailingAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: searchingView.bottomAnchor, constant: 0).isActive = true
+        
         
     }
     
@@ -82,6 +146,12 @@ class MatchSwipeVC: UIViewController {
         
         // 2. layout the first 4 cards for the user
         layoutCards()
+        
+        UIView.animate(withDuration: 0.5) {
+            self.searchingView.alpha = 0
+            self.likeImage.alpha = 1
+            self.dislikeImage.alpha = 1
+        }
     }
     
     /// Scale and alpha of successive cards visible to the user
@@ -194,6 +264,15 @@ class MatchSwipeVC: UIViewController {
         if cards.count == 0 && segmentedControl.selectedSegmentIndex == 0 { //update momLikes
             FirebaseService.fs.addToMotherLikes(userIds: motherLikes)
         }
+        
+        if cards.count == 0 {
+            UIView.animate(withDuration: 0.5) {
+                self.searchingView.alpha = 1
+                self.likeImage.alpha = 0
+                self.dislikeImage.alpha = 0
+            }
+        }
+        
     }
     
     /// UIKit dynamics variables that we need references to.
